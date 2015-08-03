@@ -74,7 +74,6 @@ namespace InfixExpressionCalculator
 
             if (inputString != null || length > 0)
             {
-                char lookaheadToken;
                 char currentToken;
                 int index = 0;
 
