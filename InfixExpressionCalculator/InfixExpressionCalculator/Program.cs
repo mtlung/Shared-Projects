@@ -86,7 +86,7 @@ namespace InfixExpressionCalculator
                         while (helper.IsTokenNumeric(inputString[index]))
                         {
                             normalizedString += inputString[index];
-                            index = index + 1;
+                            index = index + 1; 
                         }
 
                         normalizedString += ' ';
@@ -145,8 +145,11 @@ namespace InfixExpressionCalculator
         }
     }
 
-    enum TOKEN { NUMBER, OPERATOR, PARENTHESIS, NONE };
-    enum UNARY { POSITIVE, NEGATIVE, NONE };
-    enum OPERATOR { ADD, SUB, MUL, DIV, MOD, PWR, NONE };
-    enum PARENTHESIS { OPEN, CLOSE, NONE };
+    enum TOKEN { NUMBER, OPERATOR, PARENTHESIS, NONE = 10};
+    enum UNARY { POSITIVE, NEGATIVE, NONE = 10};
+    enum OPERATOR { ADD, SUB, MUL, DIV, MOD, PWR, NONE = 10 };
+    enum PARENTHESIS { OPEN, CLOSE, NONE = 10 };
+    enum PRECEDENCE { ADD = 1, SUB = 1, MUL = 2, DIV = 2, MOD = 2, PWR = 3, NONE = 10}
+    enum ASSOCIATIVITY { L2R, R2L, NONE = 10}
+
 }
