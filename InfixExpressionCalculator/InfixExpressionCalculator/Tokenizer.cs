@@ -27,7 +27,9 @@ namespace InfixExpressionCalculator
             int length = input.Length;
 
             if ((index + 1) < length)
+            {
                 lookAhead = input[index + 1];
+            }
             else
                 lookAhead = ' ';
             return lookAhead;
