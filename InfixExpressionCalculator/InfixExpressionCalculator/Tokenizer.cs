@@ -10,10 +10,7 @@ namespace InfixExpressionCalculator
     {
         public Tokenizer() {
         }
-        
-
-        public Tokenizer(string inputString)
-        {
+        public Tokenizer(string inputString) {
             this.inputString = inputString;
         }
         private char GetLookAhead(string input, int index)
@@ -26,7 +23,6 @@ namespace InfixExpressionCalculator
         {
             return true;
         }
-
         public string NormalizeInputString()
         {
             int index = 0;
@@ -35,57 +31,29 @@ namespace InfixExpressionCalculator
 
             for (index = 0; index < stringLength; index++)
             {
-                Console.WriteLine(normalizedString);
                 if (helper.IsTokenNumeric(inputString[index]))
                 {
-                    while ( (helper.IsTokenNumeric(inputString[index])) && (index != stringLength))
-
-                    {
-                        Console.WriteLine(index);
-                        normalizedString += inputString[index];
-                        index = index + 1;
-                    }
-                    normalizedString += " ";
-
+                    normalizedString += inputString[index];
                 }
                 else if (helper.IsTokenOperator(inputString[index]))
                 {
-                    if (inputString[index] == '+' || inputString[index] == '-')
-                    {
-                        if (inputString[index] == '-')
-                        {
-                            if ( helper.IsTokenNumeric(GetLookAhead(inputString, index)))
-                            {
-                                normalizedString += inputString[index];
-                            }
-                            else
-                            {
-                                normalizedString += inputString[index];
-                                normalizedString += " ";
-                            }
-                        }
-                        else
-                        {
-                            if (helper.IsTokenNumeric(GetLookAhead(inputString, index)))
-                            {
-                                normalizedString += "";
-                            }
-                            else
-                            {
-                                normalizedString += inputString[index];
-                                normalizedString += " ";
-                            }
-                        }
-                    }
                 }
                 else
                 {
-                    normalizedString += inputString[index];
-                    //normalizedString += " ";
+                    if (inputString[index] == ' ' || inputString[index] == '\t')
+                    {
+                        normalizedString += "";
+                    }
+                    else
+                    {
+                        normalizedString += inputString[index];
+                    }
                 }
             }
-            return this.normalizedString;
+            Console.WriteLine(normalizedString);
+            return normalizedString;
         }
+                
         public List<Token> Process()
         {
             helper = new TokenHelper();
