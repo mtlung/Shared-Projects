@@ -7,24 +7,20 @@ namespace InfixExpressionCalculator
         }
 
         public bool IsTokenNumeric(char c) {
-            if (Char.IsNumber(c))
-                return true;
-            else
-                return false;
+            return (Char.IsNumber(c)) ? true : false;
+        }
+
+        public bool IsTokenWhiteSpace(char c)
+        {
+            return (c == ' ' || c == '\t') ? true: false;
         }
 
         public bool IsTokenOperator(char c) {
-            if (c == '+' || c == '-' || c == '*' || c == '/' || c == '%' || c == '^')
-                return true;
-            else
-                return false;
+            return (c == '+' || c == '-' || c == '*' || c == '/' || c == '%' || c == '^') ? true : false;
         }
 
         public bool IsTokenParenthesis(char c) {
-            if (c == '(' || c == ')' || c == '{' || c == '}' || c == '[' || c == ']')
-                return true;
-            else
-                return false;
+            return (c == '(' || c == ')' || c == '{' || c == '}' || c == '[' || c == ']') ? true : false;
         }
         public UNARY GetUnaryType (char c)
         {
@@ -35,7 +31,6 @@ namespace InfixExpressionCalculator
             else
                 return UNARY.NONE;
         }
-
         public OPERATOR GetOperatorType (char c)
         {
             if (c == '+')
