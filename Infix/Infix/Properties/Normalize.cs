@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Linq.Expressions;
 using System.IO;
+using System.Collections.Specialized;
 
 namespace Infix
 {
@@ -22,77 +23,81 @@ namespace Infix
 		{
 			
 		}
-		private char GetLookAheadToken(int index)
-		{
-			
-			char lookahead = (index < input.Length - 1) ? input [index + 1] : '\0';
-			Console.WriteLine ("lookahead called: {0}", lookahead);
-			return lookahead;
+
+		private char GetLookAheadToken(int index) {
+			return (index < input.Length - 1) ? input [index + 1] : '\0';
 		}
 
-		public void ProcessNormalization()
-		{
+		public void Normalization() {
 			helper = new TokenHelper ();
-			for (int index = 0; index < input.Length; index++)
-			{
-				if (helper.IsTokenNumber (input [index]))
-				{
-					while (true) {
-						if (helper.IsTokenNumber (input [index]) && index < input.Length - 1) {
-							output += input [index];
-							index = index + 1;
-						}
-						else break;
-					}
-					output += ' ';
+			string normalized = string.Empty;
+
+			for (int index = 0; index < input.Length; index++) {
+				if (helper.IsTokenNumber (input [index])) {
+					normalized += input [index];
 				}
-				else if (helper.IsTokenOperator (input [index]))
-				{
+				else if (helper.IsTokenOperator (input [index])) {
 					if (input [index] == '-') {
 						if (helper.IsTokenNumber (GetLookAheadToken (index))) {
-							output += input [index++];
-							output += input [index++];
-						} else {
-							output += input [index++];
+							normalized += input [index++];
+							normalized += input [index++];
+						} 
+						else if (helper.IsTokenParenthesis (GetLookAheadToken (index))) {
+							normalized += "-1*";
+							index++;
 						}
-						output += input [index];
-
+						else {
+							normalized += input [index++];
+						}
+						normalized += input [index];
 					} else if (input [index] == '+') {
 						if (helper.IsTokenNumber (GetLookAheadToken (index))) {
 							index = index + 1;
-							output += input [index++];
+							normalized += input [index++];
 						} else {
-							output += input [index++];
-						//	output += ' ';
+							normalized += input [index++];
 						}
-
-						output += input [index];
+						normalized += input [index];
 					} else {
-						output += input [index];
-						output += ' ';
+						normalized += input [index];
 					}
-					//output += ' ';
 				}
-				else if (helper.IsTokenParenthesis (input [index])) 
-				{
-					output += input [index];
+				else if (helper.IsTokenParenthesis (input [index])) {
+					normalized += input [index];
 				} 
-				else 
-				{
+				else {
 					if (helper.IsTokenWhiteSpace (input [index])) {
 						while (helper.IsTokenWhiteSpace (GetLookAheadToken (index))) {
-							index = index + 1;
+							index++;
 						}
-					//	output += input [index];
-
+						normalized += input [index];
 					} 
-					else {
-					
-					}
 				}
-					
-				Console.WriteLine (input[index]);
 			}
+
+			for (int index = 0; index < normalized.Length; index++) {
+				if (helper.IsTokenNumber (normalized [index])) {
+					for (;helper.IsTokenNumber (normalized[index]);) {
+						index++;
+						output += normalized [index];					
+					}
+					output += ' ';
+				} else if (helper.IsTokenOperator (normalized [index])) {
+					Console.WriteLine ("operator detected");
+					output += normalized [index++];
+
+				} else if (helper.IsTokenParenthesis (normalized [index])) {
+					output += normalized [index++];
+				
+				} else if (helper.IsTokenWhiteSpace (normalized [index])) {
+					output += normalized [index++];
+						
+				} else {
+					index++;
+				}
+			}
+			Console.WriteLine ("normalized: {0}", normalized);
+			Console.WriteLine ("final output: {0}", output);
 		}
 
 		private TokenHelper helper = null;
