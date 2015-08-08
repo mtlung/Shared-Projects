@@ -5,27 +5,27 @@ using System.Net;
 
 namespace Infix
 {
-	class TokenHelper {
-		public bool IsTokenNumber(char c){
-			return	Char.IsNumber (c);
+	static class TokenHelper {
+		public static bool IsTokenDigit(char c){
+			return	Char.IsDigit (c);
 		}
 
-		public bool IsStringEmpty (string s) {
+		public static bool IsStringEmpty (string s) {
 			return (s.Length < 1) ? true : false;
 		}
-		public bool IsTokenWhiteSpace (char c) {
+		public static  bool IsTokenWhiteSpace (char c) {
 			return ((c == ' ') || (c == '\t')) ? true : false;
 		}
 
-		public bool IsTokenOperator(char c) {
+		public static bool IsTokenOperator(char c) {
 			return ((c == '+') || (c == '-') || (c == '*') || (c == '/') || (c == '%') || (c == '^')? true: false);
 		}
 
-		public bool IsTokenParenthesis (char c) {
+		public  static bool IsTokenParenthesis (char c) {
 			return ((c == '(' || c == ')' || c == '{' || c == '}' || c == '[' || c == ']') ? true : false);
 		}
 
-		public UNARY GetUnaryType(char c)
+		public  static UNARY GetUnaryType(char c)
 		{
 			switch (c) {
 			case '+':
@@ -40,7 +40,7 @@ namespace Infix
 			}
 		}
 
-		public PARENTHESIS GetParenthesisType (char c)
+		public  static PARENTHESIS GetParenthesisType (char c)
 		{
 			switch (c) {
 			case '(':
@@ -67,7 +67,7 @@ namespace Infix
 			}
 		}
 
-		public OPERATOR GetOperatorType(char c)
+		public  static OPERATOR GetOperatorType(char c)
 		{
 			switch (c) {
 			case '+':
