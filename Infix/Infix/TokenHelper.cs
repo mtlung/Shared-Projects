@@ -18,7 +18,7 @@ namespace Infix
 		}
 
 		public static bool IsTokenOperator(char c) {
-			return ((c == '+') || (c == '-') || (c == '*') || (c == '/') || (c == '%') || (c == '^')? true: false);
+			return ((c == '+') || (c == '-') || (c == '*') || (c == '/') || (c == '%') || (c == '^') ? true: false);
 		}
 
 		public  static bool IsTokenParenthesis (char c) {
@@ -30,13 +30,10 @@ namespace Infix
 			switch (c) {
 			case '+':
 				return UNARY.POSITIVE;
-				break;
 			case '-':
 				return UNARY.NEGATIVE;
-				break;
 			default: 
 				return UNARY.NONE;
-				break;
 			}
 		}
 
@@ -45,25 +42,18 @@ namespace Infix
 			switch (c) {
 			case '(':
 				return PARENTHESIS.OPEN;
-				break;
 			case '{':
 				return PARENTHESIS.OPEN;
-				break;
 			case '[':
 				return PARENTHESIS.OPEN;
-				break;
 			case ')':
 				return PARENTHESIS.CLOSE;
-				break;
 			case ']':
 				return PARENTHESIS.CLOSE;
-				break;
 			case '}':
 				return PARENTHESIS.CLOSE;
-				break;
 			default: 
 				return PARENTHESIS.NONE;
-				break;
 			}
 		}
 
@@ -72,25 +62,18 @@ namespace Infix
 			switch (c) {
 			case '+':
 				return OPERATOR.ADD;
-				break;
 			case '-':
 				return OPERATOR.SUB;
-				break;
 			case '*':
 				return OPERATOR.MUL;
-				break;
 			case '/':
 				return OPERATOR.DIV;
-				break;
 			case '^':
 				return OPERATOR.PWR;
-				break;
 			case '%':
 				return OPERATOR.MOD;
-				break;
 			default:
 				return OPERATOR.NONE;
-				break;
 			}
 		}
 	}

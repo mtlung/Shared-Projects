@@ -9,8 +9,7 @@ namespace Infix
 		public static void Main (string[] args)
 		{
 			var infixNormalizer = new InfixNormalizer ();
-			string infixExpression;
-
+			string infixExpression = null;
 			do {
 				Console.WriteLine ("Please enter infix expression: ");
 
@@ -18,8 +17,8 @@ namespace Infix
 				infixNormalizer.Infix = infixExpression;
 				infixNormalizer.Normalize ();
 
-			//	Console.WriteLine ("Infix entered: {0}", infixNormalizer.Infix);
-			//	Console.WriteLine ("Normalized: {0}", infixNormalizer.Normalized); 
+				Console.WriteLine ("Infix entered: {0}", infixNormalizer.Infix);
+				Console.WriteLine ("Normalized: {0}", infixNormalizer.Normalized); 
 
 
 			} while (!String.IsNullOrEmpty (infixExpression));
