@@ -2,33 +2,30 @@
 using System.Collections.Generic;
 using System.Threading;
 
-namespace Infix
+namespace InfixCalculator
 {
-	class Program
+	class InfixPostfixCalculator
 	{
 		public static void Main (string[] args)
 		{
-			var infixNormalizer = new InfixNormalizer ();
 			var infixToPostfixProcessor = new InfixPostfixProcessor ();
-
 			string infixExpression = null;
 			do {
-				Console.WriteLine ("Please enter infix expression: ");
+				Console.Write ("Please enter infix expression (press Enter to terminate): ");
 
 				infixExpression = Console.ReadLine ();
-				infixNormalizer.Infix = infixExpression;
-				infixNormalizer.Normalize ();
-				infixToPostfixProcessor.Infix = infixNormalizer.Normalized;
+				Console.WriteLine("----------------------------------------");
+				if (infixExpression.Length > 0) {
+				infixToPostfixProcessor.InfixExpression = infixExpression;
+				infixToPostfixProcessor.PreProcessInfixExpresion();
 				infixToPostfixProcessor.ProcessInfixToPostfix ();
-				string s = infixToPostfixProcessor.Infix;
-				Console.WriteLine("Processed infix: {0}", s);
-				Console.WriteLine ("Infix entered: {0}", infixNormalizer.Infix);
-				Console.WriteLine ("Normalized: {0}", infixNormalizer.Normalized); 
-				infixToPostfixProcessor.ProcessPostfix();
-				double result = infixToPostfixProcessor.Result;
-				Console.WriteLine ("final calculation result is: {0}", result);
-			
+				infixToPostfixProcessor.ProcessPostfixCaculation ();
 
+				double result = infixToPostfixProcessor.CalculationResult;
+				Console.WriteLine(infixToPostfixProcessor.ToString ());
+						
+				Console.WriteLine("----------------------------------------");
+				}
 			} while (!String.IsNullOrEmpty (infixExpression));
 		}
 	}

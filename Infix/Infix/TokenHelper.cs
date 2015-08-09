@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Linq.Expressions;
-using System.Runtime.CompilerServices;
-using System.Net;
 
-namespace Infix
+namespace InfixCalculator
 {
 	static class TokenHelper {
 		public static bool IsTokenDigit(char c){
@@ -37,6 +34,36 @@ namespace Infix
 			return ((c == '(' || c == ')' || c == '{' || c == '}' || c == '[' || c == ']') ? true : false);
 		}
 
+		/// <summary>
+		/// Determines whether specificed token (s at index) is a unary operator.
+		/// </summary>
+		/// <returns><c>true</c> if token at index is unary; otherwise, <c>false</c>.</returns>
+		/// <param name="s">string</param>
+		/// <param name="index">inteter</param>
+		public static bool IsTokenUnary(string s, int index) 
+		{
+			if (index == 0)
+			{
+				return true;
+			} 
+			else if (TokenHelper.IsTokenOperator (s [index - 1])) 
+			{
+				return true;
+			} 
+			else if (TokenHelper.IsTokenParenthesis (s [index - 1])) 
+			{
+				return (s [index - 1] == '(') ? true : false;
+			} 
+			else 
+			{
+				return false;
+			}
+		}
+		/// <summary>
+		/// Gets the precedence of an operator S
+		/// </summary>
+		/// <returns>enum PRECEDENCE</returns>
+		/// <param name="s">string</param>
 		public static PRECEDENCE GetPrecedence(string s) {
 			switch(s) {
 			case "+":
@@ -187,14 +214,15 @@ namespace Infix
 
 		public static TOKENTYPE GetTokenType(string s)
 		{
-			if (IsTokenNumer (s))
+			if (IsTokenNumer (s)) {
 				return TOKENTYPE.NUMBER;
-			else if (IsTokenOperator (s))
+			} else if (IsTokenOperator (s)) {
 				return TOKENTYPE.OPERATOR;
-			else if (IsTokenParenthesis (s))
+			} else if (IsTokenParenthesis (s)) {
 				return TOKENTYPE.PARENTHESIS;
-			else
+			} else {
 				return TOKENTYPE.NONE;
+			}
 		}
 	}
 }

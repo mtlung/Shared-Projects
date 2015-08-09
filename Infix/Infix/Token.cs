@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Infix
+namespace InfixCalculator
 {
 	public class Token
 	{
