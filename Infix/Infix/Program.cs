@@ -24,7 +24,10 @@ namespace Infix
 				Console.WriteLine("Processed infix: {0}", s);
 				Console.WriteLine ("Infix entered: {0}", infixNormalizer.Infix);
 				Console.WriteLine ("Normalized: {0}", infixNormalizer.Normalized); 
-
+				infixToPostfixProcessor.ProcessPostfix();
+				double result = infixToPostfixProcessor.Result;
+				Console.WriteLine ("final calculation result is: {0}", result);
+			
 
 			} while (!String.IsNullOrEmpty (infixExpression));
 		}
