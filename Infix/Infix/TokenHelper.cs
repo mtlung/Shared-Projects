@@ -36,9 +36,55 @@ namespace Infix
 		public static bool IsTokenParenthesis (char c) {
 			return ((c == '(' || c == ')' || c == '{' || c == '}' || c == '[' || c == ']') ? true : false);
 		}
-			
-		public  static UNARY GetUnaryType(char c)
-		{
+
+		public static PRECEDENCE GetPrecedence(string s) {
+			switch(s) {
+			case "+":
+				return PRECEDENCE.ADD;
+			case "-":
+				return PRECEDENCE.SUB;
+			case "*":
+				return PRECEDENCE.MUL;
+			case "/":
+				return PRECEDENCE.DIV;
+			case "^":
+				return PRECEDENCE.PWR;
+			case "%":
+				return PRECEDENCE.MOD;
+			case "(":
+				return PRECEDENCE.PAREN;
+			case ")":
+				return PRECEDENCE.PAREN;
+			default:
+				return PRECEDENCE.NONE;
+			}
+		}
+
+		public static PRECEDENCE GetPrecedence(char c) {
+			switch(c) {
+			case '+':
+				return PRECEDENCE.ADD;
+			case '-':
+				return PRECEDENCE.SUB;
+			case '*':
+				return PRECEDENCE.MUL;
+			case '/':
+				return PRECEDENCE.DIV;
+			case '^':
+				return PRECEDENCE.PWR;
+			case '%':
+				return PRECEDENCE.MOD;
+			case '(':
+				return PRECEDENCE.PAREN;
+			case ')':
+				return PRECEDENCE.PAREN;
+
+			default:
+				return PRECEDENCE.NONE;
+			}
+		}
+
+		public  static UNARY GetUnaryType(char c) {
 			switch (c) {
 			case '+':
 				return UNARY.POSITIVE;
@@ -61,8 +107,7 @@ namespace Infix
 			}
 		}
 
-		public  static PARENTHESIS GetParenthesisType (char c)
-		{
+		public  static PARENTHESIS GetParenthesisType (char c) {
 			switch (c) {
 			case '(':
 				return PARENTHESIS.OPEN;
@@ -81,8 +126,7 @@ namespace Infix
 			}
 		}
 
-		public  static PARENTHESIS GetParenthesisType (string s)
-		{
+		public  static PARENTHESIS GetParenthesisType (string s) {
 			switch (s) {
 			case "(":
 				return PARENTHESIS.OPEN;
