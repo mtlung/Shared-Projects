@@ -7,12 +7,29 @@
 //
 
 #include <iostream>
+using std::cout;
+using std::cin;
+using std::endl;
+
+#include <string>
+using std::string;
 
 #include "InfixCalculator.h"
 
 int main(int argc, const char * argv[]) {
  
-    InfixCalculator infixCalc("123+45+6789");
-    infixCalc.preprocessInfixExpression();
+    string userInput;
+    InfixCalculator infixCalc;
+    
+    do {
+        cout<<"Enter expression to evaluate: "<<endl;
+        getline(cin, userInput);
+        if (!userInput.empty()) {
+            infixCalc.infixExpression = userInput;
+            infixCalc.preprocessInfixExpression();
+        }
+    } while (userInput.length() > 0);
+    cout<<"Execution terminated..."<<endl;
+    
     return 0;
 }

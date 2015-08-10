@@ -17,11 +17,19 @@ InfixCalculator::InfixCalculator(string infix) {
     this->infixExpression = infix;
 }
 
+InfixCalculator::InfixCalculator(string infix[]) {
+ 
+    
+}
 void InfixCalculator::preprocessInfixExpression() {
     
     int index = 0;
     string preProcessedInfixExpression;
-
+    
+    cout<<"raw infix expression: "<<infixExpression<<endl;
+    infixExpression = removespaces(infixExpression);
+    cout<<"trimmed infix expression: "<<infixExpression <<endl;
+    
     while (infixExpression[index]) {
         // if current token is a digit
         if (TokenHelper::isTokenDigit(infixExpression[index])) {
@@ -99,9 +107,12 @@ void InfixCalculator::preprocessInfixExpression() {
             }
         }
         else {
+            cout<<"white space: ";
             preProcessedInfixExpression += cs(infixExpression [index++]) + " ";
+            cout<<endl;
         }
     }
+   // preProcessedInfixExpression += "\0";
     cout<<"Preprocessed: "<<preProcessedInfixExpression<<endl;
 }
 
