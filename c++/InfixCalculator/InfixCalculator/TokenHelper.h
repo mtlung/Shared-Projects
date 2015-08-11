@@ -11,12 +11,15 @@
 #define INFIXCALCULATOR_TOKENHELPER_H
 
 namespace TokenHelper {
-	inline bool isTokenDigit(char c) {
-		return (isdigit(c) > 0) ? true : false;
-	}
+	bool isTokenDigit(char c);
 	bool isTokenOperator(char c);
 	bool isTokenUnary(string s, int index);
 	bool isTokenParenthesis(char c);
+	bool isTokenParenthesis(string s);
+	bool isTokenNumber(string s);
+	bool isTokenOperator(string s);
+	TOKEN_TYPE getTokenType(string s);
 	PARENTHESIS_OPENING getParenthesisOpening(char c);
+
 }
 #endif
