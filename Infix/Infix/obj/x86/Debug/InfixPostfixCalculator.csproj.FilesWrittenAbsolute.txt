@@ -1,5 +1,0 @@
-/Users/Patrick/Documents/Programming/Shared-Projects/Infix/Infix/obj/x86/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
-/Users/Patrick/Documents/Programming/Shared-Projects/Infix/Infix/bin/Debug/Infix.exe.mdb
-/Users/Patrick/Documents/Programming/Shared-Projects/Infix/Infix/bin/Debug/Infix.exe
-/Users/Patrick/Documents/Programming/Shared-Projects/Infix/Infix/obj/x86/Debug/Infix.exe
-/Users/Patrick/Documents/Programming/Shared-Projects/Infix/Infix/obj/x86/Debug/Infix.exe.mdb
