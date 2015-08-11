@@ -7,13 +7,6 @@ namespace InfixCalculator
 			return	Char.IsDigit (c);
 		}
 
-		public static bool IsStringEmpty (string s) {
-			return (s.Length < 1) ? true : false;
-		}
-		public static  bool IsTokenWhiteSpace (char c) {
-			return ((c == ' ') || (c == '\t')) ? true : false;
-		}
-
 		public static bool IsTokenNumer(string s) {
 			double d = 0.00f;
 			return double.TryParse (s, out d);
@@ -84,53 +77,6 @@ namespace InfixCalculator
 				return PRECEDENCE.PAREN;
 			default:
 				return PRECEDENCE.NONE;
-			}
-		}
-
-		public static PRECEDENCE GetPrecedence(char c) {
-			switch(c) {
-			case '+':
-				return PRECEDENCE.ADD;
-			case '-':
-				return PRECEDENCE.SUB;
-			case '*':
-				return PRECEDENCE.MUL;
-			case '/':
-				return PRECEDENCE.DIV;
-			case '^':
-				return PRECEDENCE.PWR;
-			case '%':
-				return PRECEDENCE.MOD;
-			case '(':
-				return PRECEDENCE.PAREN;
-			case ')':
-				return PRECEDENCE.PAREN;
-
-			default:
-				return PRECEDENCE.NONE;
-			}
-		}
-
-		public  static UNARY GetUnaryType(char c) {
-			switch (c) {
-			case '+':
-				return UNARY.POSITIVE;
-			case '-':
-				return UNARY.NEGATIVE;
-			default: 
-				return UNARY.NONE;
-			}
-		}
-
-		public  static UNARY GetUnaryType(string s)
-		{
-			switch (s) {
-			case "+":
-				return UNARY.POSITIVE;
-			case "-":
-				return UNARY.NEGATIVE;
-			default: 
-				return UNARY.NONE;
 			}
 		}
 
@@ -211,8 +157,26 @@ namespace InfixCalculator
 				return OPERATOR.NONE;
 			}
 		}
-
-		public static TOKENTYPE GetTokenType(string s)
+        public static TOKENTYPE GetTokenType(char c)
+        {
+            if (IsTokenDigit(c))
+            {
+                return TOKENTYPE.NUMBER;
+            }
+            else if (IsTokenOperator(c))
+            {
+                return TOKENTYPE.OPERATOR;
+            }
+            else if (IsTokenParenthesis(c))
+            {
+                return TOKENTYPE.PARENTHESIS;
+            }
+            else
+            {
+                return TOKENTYPE.NONE;
+            }
+        }
+        public static TOKENTYPE GetTokenType(string s)
 		{
 			if (IsTokenNumer (s)) {
 				return TOKENTYPE.NUMBER;
