@@ -149,23 +149,25 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="inc\PreProcessInfixExpression.h" />
+    <ClInclude Include="InfixExpressionToPostfix.h" />
+    <ClInclude Include="PreProcessInfixExpression.h" />
     <ClInclude Include="stdafx.h" />
-    <ClInclude Include="inc\targetver.h" />
-    <ClInclude Include="inc\Token.h" />
-    <ClInclude Include="inc\TokenHelper.h" />
-    <ClInclude Include="inc\TokenType.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="Token.h" />
+    <ClInclude Include="TokenHelper.h" />
+    <ClInclude Include="TokenType.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="InfixCalculator.cpp" />
-    <ClCompile Include="src\PreProcessInfixExpression.cpp" />
+    <ClCompile Include="InfixExpressionToPostfix.cpp" />
+    <ClCompile Include="PreProcessInfixExpression.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="src\TokenHelper.cpp" />
+    <ClCompile Include="TokenHelper.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
