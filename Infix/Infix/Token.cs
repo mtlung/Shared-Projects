@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace InfixCalculator
+﻿namespace InfixCalculator
 {
 	public class Token
 	{

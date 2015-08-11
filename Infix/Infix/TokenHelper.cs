@@ -105,7 +105,6 @@ namespace InfixCalculator
 				return PRECEDENCE.PAREN;
 			case ')':
 				return PRECEDENCE.PAREN;
-
 			default:
 				return PRECEDENCE.NONE;
 			}

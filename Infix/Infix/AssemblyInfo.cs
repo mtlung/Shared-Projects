@@ -4,10 +4,10 @@ using System.Runtime.CompilerServices;
 // Information about this assembly is defined by the following attributes.
 // Change them to the values specific to your project.
 
-[assembly: AssemblyTitle ("Infix")]
+[assembly: AssemblyTitle ("Infix Calculator")]
 [assembly: AssemblyDescription ("")]
 [assembly: AssemblyConfiguration ("")]
-[assembly: AssemblyCompany ("")]
+[assembly: AssemblyCompany ("Microsoft Corporation")]
 [assembly: AssemblyProduct ("")]
 [assembly: AssemblyCopyright ("Patrick")]
 [assembly: AssemblyTrademark ("")]

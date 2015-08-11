@@ -14,7 +14,7 @@ namespace InfixCalculator
 				Console.Write ("Please enter infix expression (press Enter to terminate): ");
 
 				infixExpression = Console.ReadLine ();
-				Console.WriteLine("----------------------------------------");
+				Console.WriteLine("---------------------------------------");
 				if (infixExpression.Length > 0) {
 				infixToPostfixProcessor.InfixExpression = infixExpression;
 				infixToPostfixProcessor.PreProcessInfixExpresion();
@@ -24,7 +24,7 @@ namespace InfixCalculator
 				double result = infixToPostfixProcessor.CalculationResult;
 				Console.WriteLine(infixToPostfixProcessor.ToString ());
 						
-				Console.WriteLine("----------------------------------------");
+				Console.WriteLine("---------------------------------------");
 				}
 			} while (!String.IsNullOrEmpty (infixExpression));
 		}

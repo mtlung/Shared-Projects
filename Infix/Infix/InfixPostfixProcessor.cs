@@ -25,8 +25,8 @@ namespace InfixCalculator
 		/// </summary>
 		public void ProcessPostfixCaculation() {
 			
-			double operand1 = 0.0f;
-			double operand2 = 0.0f;
+			double operand1 = 0.00f;
+			double operand2 = 0.00f;
 			operandStack = new Stack<double> ();
 
 			foreach (Token token in postfixExpression) {
