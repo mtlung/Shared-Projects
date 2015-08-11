@@ -1,10 +1,11 @@
 #pragma once
 
-#include "stdafx.h"
-#include "TokenType.h"
+#include "../stdafx.h"
 
 //  Created by Patrick Shim on 10/8/15.
 //  Copyright (c) 2015 Microsoft Corporation. All rights reserved.
+
+#include "../inc/TokenType.h"
 
 #ifndef INFIXCALCULATOR_TOKENHELPER_H
 #define INFIXCALCULATOR_TOKENHELPER_H

@@ -1,8 +1,11 @@
-// InfixCalculator.cpp : Defines the entry point for the console application.
-//
+#pragma once
 
 #include "stdafx.h"
-#include "PreProcessInfixExpression.h"
+
+//  Created by Patrick Shim on 10/8/15.
+//  Copyright (c) 2015 Microsoft Corporation. All rights reserved.
+
+#include "inc/PreProcessInfixExpression.h"
 
 int main(int argc, const char * argv[]) {
 
