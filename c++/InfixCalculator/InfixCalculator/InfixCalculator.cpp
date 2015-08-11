@@ -13,7 +13,7 @@ int main(int argc, const char * argv[]) {
 		cout << "Enter expression to evaluate: " << endl;
 		getline(cin, userInput);
 		if (!userInput.empty()) {
-			infixCalc.rawInfixExpression = userInput;
+			infixCalc.SetRawInfixExpression(userInput);
 			infixCalc.Process();
 			infixCalc.DisplayPreProcessedInfixExpression();
 	//		infixCalc.processInfixToPostfix();

@@ -11,12 +11,11 @@
 
 namespace TokenHelper {
 	inline bool isTokenDigit(char c) {
-		return isdigit(c);
+		return (isdigit(c) > 0) ? true : false;
 	}
 	bool isTokenOperator(char c);
 	bool isTokenUnary(string s, int index);
 	bool isTokenParenthesis(char c);
-	string getStringFromCharacter(char c);
 	PARENTHESIS_OPENING getParenthesisOpening(char c);
 }
 #endif

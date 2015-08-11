@@ -1,10 +1,11 @@
 #pragma once
 
 #include "stdafx.h"
-#include "TokenHelper.h"
 
 //  Created by Patrick Shim on 10/8/15.
 //  Copyright (c) 2015 Microsoft Corporation. All rights reserved.
+
+#include "TokenHelper.h"
 
 #ifndef INFIXCALCULATOR_PREPROCESSINFIXEXPRESSION_H
 #define INFIXCALCULATOR_PREPROCESSINFIXEXPRESSION_H
@@ -13,19 +14,23 @@ class PreProcessInfixExpression
 {
 public:
 	PreProcessInfixExpression();
-	PreProcessInfixExpression(string infixExpression);
+	PreProcessInfixExpression(const string infixExpression);
+	PreProcessInfixExpression(const char *infixExpression);
 	~PreProcessInfixExpression();
+
 public:
 	void Process();
 	void DisplayPreProcessedInfixExpression();
-	string GetPreProcessedInfixExpression();
-	string GetRawInfixExpression();
-	string rawInfixExpression;
+	string GetPreProcessedInfixExpression() const;
+	string GetRawInfixExpression() const;
+	void SetRawInfixExpression(string rawInfixExpression);
+	void SetRawInfixExpression(char rawInfixExpression[]);
+	
 
 private:
 	vector<string> preProcessedInfixExpression;
 	string trimmedInfixExpression;
-
+	string rawInfixExpression;
 private:
 	inline string cs(char c) {
 		stringstream ss;
