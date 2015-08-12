@@ -210,7 +210,6 @@ namespace InfixCalculator
                         {
                             preProccessedInfixExpression += InfixExpression[index++];
                         }
-
                     } while (true);
                 }
                 else if (TokenHelper.IsTokenOperator(InfixExpression[index]))
@@ -297,18 +296,22 @@ namespace InfixCalculator
 			InfixExpression = InfixExpression.Replace ("\t", "");
 			InfixExpression = InfixExpression.Trim ();
 		}
-			
-		private string[] normalizedInfixExression = null;
+
+        #region member variables   
+        private string[] normalizedInfixExression = null;
 		private string[] infixExpiression = null;
 		private double calculationResult = 0.0f;
 		private List<Token> postfixExpression = null;
 		private Stack<Token> operatorStack = null;
 		private Stack<double> operandStack = null;
+        #endregion
 
-		public double CalculationResult { get { return calculationResult; } }
+        #region properties
+        public double CalculationResult { get { return calculationResult; } }
 		public string InfixExpression  { get { return String.Join (" ", infixExpiression); } set { infixExpiression = value.Split (' '); } }
 		public string NormalizedInfixExpression { get { return String.Join (" ", normalizedInfixExression); } }
-	}
+        #endregion
+    }
 }
 
 
