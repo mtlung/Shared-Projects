@@ -19,7 +19,8 @@ namespace TokenHelper {
 	bool isTokenNumber(string s);
 	bool isTokenOperator(string s);
 	TOKEN_TYPE getTokenType(string s);
+	PRECEDENCE getTokenPrecedence(string s);
+	PARENTHESIS_OPENING getParenthesisOpening(string s);
 	PARENTHESIS_OPENING getParenthesisOpening(char c);
-
 }
 #endif

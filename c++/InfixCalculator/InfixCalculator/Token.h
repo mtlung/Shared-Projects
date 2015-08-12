@@ -14,14 +14,19 @@ class Token
 {
 public:
 
-	Token(std::string value, TOKEN_TYPE type) {
+	Token() {
+
+	}
+	Token(std::string value, TOKEN_TYPE type, PRECEDENCE precedence) {
 		this->value = value;
-		this->type = TOKEN_TYPE::NON;
+		this->type = type;
+		this->precedence = precedence;
 	}
 	~Token() {}
 	
-	std::string value;
+	string value;
 	TOKEN_TYPE type;
+	PRECEDENCE precedence;
 };
 
 #endif

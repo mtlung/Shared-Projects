@@ -23,8 +23,10 @@ int main(int argc, const char * argv[]) {
 			infixCalc.Process();
 			infixCalc.DisplayPreProcessedInfixExpression();
 			preProcessedInfixExpression = infixCalc.GetPreProcessedInfixExpression();
+			infixToPostfix.setInfixExpression(preProcessedInfixExpression);
+			infixToPostfix.DisplayInfixExpression();
 			infixToPostfix.Process();
-	//		infixCalc.processInfixToPostfix();
+			infixToPostfix.DisplayPostfixExpression();
 		}
 	} while (userInput.length() > 0);
 	cout << "Execution terminated..." << endl;

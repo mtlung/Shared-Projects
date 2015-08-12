@@ -22,21 +22,21 @@ namespace TokenHelper {
 		default: return false; break;
 		}
 	}
+
 	bool isTokenOperator(string s)
 	{
 		if ((s == "+") || (s == "-") || (s == "*") || (s == "/") || (s == "%") || (s == "^"))
-		{
 			return true;
-		}
-		else { return false; }
+		else 
+			return false;
 	}
+
 	bool isTokenParenthesis(string s)
 	{
 		if ((s == "(") || (s == "[") || (s == "{") || (s == "}") || (s == "]") || (s == ")"))
-		{
 			return true;
-		}
-		else { return false; }
+		else 
+			return false;
 	}
 
 	bool isTokenParenthesis(char c) {
@@ -51,17 +51,24 @@ namespace TokenHelper {
 		}
 	}
 
+	PARENTHESIS_OPENING getParenthesisOpening(string c)
+	{
+		if (c == "(" || c == "{" || c == "[")
+			return PARENTHESIS_OPENING::OPN;
+		else if (c == ")" || c == "}" || c == "]")
+			return PARENTHESIS_OPENING::CLS;
+		else
+			return PARENTHESIS_OPENING::NON;
+	}
+
 	PARENTHESIS_OPENING getParenthesisOpening(char c)
 	{
-		switch (c) {
-		case '(': return PARENTHESIS_OPENING::OPN; break;
-		case '{': return PARENTHESIS_OPENING::OPN; break;
-		case '[': return PARENTHESIS_OPENING::OPN; break;
-		case ')': return PARENTHESIS_OPENING::CLS; break;
-		case '}': return PARENTHESIS_OPENING::CLS; break;
-		case ']': return PARENTHESIS_OPENING::CLS; break;
-		default: return PARENTHESIS_OPENING::NON; break;
-		}
+		if (c == '(' || c == '{' || c == '[')
+			return PARENTHESIS_OPENING::OPN;
+		else if (c == ')' || c == '}' || c == ']')
+			return PARENTHESIS_OPENING::CLS;
+		else
+			return PARENTHESIS_OPENING::NON;
 	}
 
 	bool isTokenDigit(char c) {
@@ -69,19 +76,13 @@ namespace TokenHelper {
 	}
 
 	bool isTokenNumber(string s) {
-		stringstream ss;
-		ss << s;
-		double number = 0.0f;
-		ss >> number;
-		if (ss.good()) {
-			return false;
+
+		bool isNumber = true;
+		for (string::const_iterator it = s.begin(); it != s.end(); ++it)
+		{
+			isNumber = isNumber && isdigit(*it);
 		}
-		else if (number == 0 && s[0] != '0') {
-			return false;
-		}
-		else {
-			return true;
-		}
+		return isNumber;
 	}
 
 	TOKEN_TYPE getTokenType(string s)
@@ -98,6 +99,28 @@ namespace TokenHelper {
 		else {
 			return TOKEN_TYPE::NON;
 		}
+	}
+
+	PRECEDENCE getTokenPrecedence(string s)
+	{
+		if (s == "+")
+			return PRECEDENCE::ADD;
+		else if (s == "-")
+			return PRECEDENCE::SUB;
+		else if (s == "*")
+			return PRECEDENCE::MUL;
+		else if (s == "/")
+			return PRECEDENCE::DIV;
+		else if (s == "^")
+			return PRECEDENCE::PWR;
+		else if (s == "%")
+			return PRECEDENCE::MOD;
+		else if (TokenHelper::isTokenParenthesis(s))
+			return PRECEDENCE::PAR;
+		else if (TokenHelper::isTokenNumber(s))
+			return PRECEDENCE::NON;
+		else
+			return PRECEDENCE::NON;
 	}
 
 	bool isTokenUnary(string s, int index) {

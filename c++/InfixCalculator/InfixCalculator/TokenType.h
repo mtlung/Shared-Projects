@@ -40,8 +40,8 @@ enum class NUMBER_TYPE {
 	NEG = 2
 };
 
-enum class PRIORITY {
-	PRN = 1,
+enum class PRECEDENCE {
+	PAR = 1,
 	ADD = 2,
 	SUB = 2,
 	MUL = 3,

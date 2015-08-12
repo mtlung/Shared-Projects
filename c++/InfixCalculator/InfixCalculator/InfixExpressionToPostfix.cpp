@@ -9,6 +9,21 @@ InfixExpressionToPostfix::InfixExpressionToPostfix()
 {
 }
 
+InfixExpressionToPostfix::InfixExpressionToPostfix(string infixExpression)
+{
+	this->setInfixExpression(infixExpression);
+}
+
+InfixExpressionToPostfix::InfixExpressionToPostfix(char * infixExpression)
+{
+	this->infixExpression = stov(infixExpression);
+}
+
+InfixExpressionToPostfix::InfixExpressionToPostfix(vector<string> infixExpression)
+{
+	this->infixExpression = infixExpression;
+}
+
 
 InfixExpressionToPostfix::~InfixExpressionToPostfix()
 {
@@ -16,8 +31,113 @@ InfixExpressionToPostfix::~InfixExpressionToPostfix()
 
 void InfixExpressionToPostfix::Process()
 {
-	for (auto item : infixExpression)
-	{
-		Token token(item, TokenHelper::getTokenType(item));
+	for (unsigned index = 0; index < infixExpression.size(); index++) {
+	
+		Token token;
+		token.value = infixExpression.at(index);
+		token.type = TokenHelper::getTokenType(infixExpression.at(index));
+		token.precedence = TokenHelper::getTokenPrecedence(infixExpression.at(index));
+			
+		if (token.type == TOKEN_TYPE::NUM)
+		{
+			postfixExpression.push_back(token);
+		}
+		else if (token.type == TOKEN_TYPE::OPR) {
+
+			if (operatorStack.empty())
+			{
+				operatorStack.push(token);
+			}
+			else {
+				while (!operatorStack.empty() && 
+					TokenHelper::isTokenOperator(operatorStack.top().value) &&
+					(token.precedence <= operatorStack.top().precedence)) 
+				{
+					postfixExpression.push_back(operatorStack.top());
+					operatorStack.pop();
+				}
+				operatorStack.push(token);
+			}
+		}
+		else if (token.type == TOKEN_TYPE::PAR) {
+
+			if (TokenHelper::getParenthesisOpening(token.value) == PARENTHESIS_OPENING::OPN)
+			{
+				operatorStack.push(token);
+			}
+			else if (TokenHelper::getParenthesisOpening(token.value) == PARENTHESIS_OPENING::CLS)
+			{
+				while (TokenHelper::getParenthesisOpening(operatorStack.top().value) != PARENTHESIS_OPENING::OPN)
+				{
+					postfixExpression.push_back(operatorStack.top());
+					operatorStack.pop();
+				}
+				operatorStack.pop();
+			}
+		}
 	}
+
+	while (!operatorStack.empty()) {
+		postfixExpression.push_back(operatorStack.top());
+		operatorStack.pop();
+	}
+}
+
+void InfixExpressionToPostfix::DisplayInfixExpression()
+{
+	int index = 0;
+	for (auto token : infixExpression)
+	{
+		cout << "token at[" << index << "]:" << token << endl;;
+		index = index + 1;
+	}
+}
+
+void InfixExpressionToPostfix::DisplayPostfixExpression()
+{
+	int index = 0;
+	for (auto token : postfixExpression)
+	{
+		cout << "token at[" << index << "]:" << token.value << endl;;
+		index = index + 1;
+	}
+}
+
+void InfixExpressionToPostfix::setInfixExpression(string infixExpression)
+{
+	this->infixExpression = stov(infixExpression);
+}
+
+void InfixExpressionToPostfix::setInfixExpression(char * infixExpression)
+{
+	this->infixExpression = stov(infixExpression);
+}
+
+void InfixExpressionToPostfix::setInfixExpression(vector<string> infixExpression)
+{
+	this->infixExpression = infixExpression;
+}
+
+string InfixExpressionToPostfix::getInfixExpression() const
+{
+	string buffer;
+	for (auto token : infixExpression)
+	{
+		buffer.append(token);
+		buffer.append(" ");
+	}
+
+	return buffer;
+}
+
+string InfixExpressionToPostfix::getPostfixPexression() const
+{
+	string buffer;
+	for (auto token : postfixExpression)
+	{
+		buffer.append(token.value);
+		buffer.append(" ");
+	}
+
+	return buffer;
 }
