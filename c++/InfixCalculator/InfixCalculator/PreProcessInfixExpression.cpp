@@ -37,12 +37,12 @@ void PreProcessInfixExpression::Process() {
 			do {
 				// IF current token is a digit, then keep on adding to output string
 				if (TokenHelper::isTokenDigit(trimmedInfixExpression[index])) {
-					concatenated += cs(trimmedInfixExpression[index]);
+					concatenated += TokenHelper::convertCharToString(trimmedInfixExpression[index]);
 					index = index + 1;
 				}
 				// ELSE IF current index reached end of infix string, then break after adding to output
 				else if (index >= trimmedInfixExpression.length()) {
-					concatenated += cs(trimmedInfixExpression[index]);
+					concatenated += TokenHelper::convertCharToString(trimmedInfixExpression[index]);
 					index = index + 1;
 					break;
 				}
@@ -61,8 +61,8 @@ void PreProcessInfixExpression::Process() {
 			if (TokenHelper::isTokenUnary(trimmedInfixExpression, index)) {
 				// if the unary operator is -, then add - symbol to the output without space
 				if (trimmedInfixExpression[index] == '-') {
-				//	preProcessedInfixExpression.push_back(trim(cs(trimmedInfixExpression[index])));
-					concatenated = trim(cs(trimmedInfixExpression[index]));
+				//	preProcessedInfixExpression.push_back(trim(TokenHelper::convertconvertCharToString(trimmedInfixExpression[index])));
+					concatenated = trim(TokenHelper::convertCharToString(trimmedInfixExpression[index]));
 					index = index + 1;
 				}
 				// if the unary operator is +, then skip to the next position without adding to output)
@@ -71,12 +71,12 @@ void PreProcessInfixExpression::Process() {
 				}
 				// if neither, then add token and whitespace to output
 				else {
-					preProcessedInfixExpression.push_back(trim(cs(trimmedInfixExpression[index])));
+					preProcessedInfixExpression.push_back(trim(TokenHelper::convertCharToString(trimmedInfixExpression[index])));
 					index = index + 1;
 				}
 			}
 			else {
-				preProcessedInfixExpression.push_back(trim(cs(trimmedInfixExpression[index])));
+				preProcessedInfixExpression.push_back(trim(TokenHelper::convertCharToString(trimmedInfixExpression[index])));
 				index = index + 1;
 			}
 		}
@@ -84,7 +84,7 @@ void PreProcessInfixExpression::Process() {
 		else if (TokenHelper::isTokenParenthesis(trimmedInfixExpression[index])) {
 
 			if (index == 0) {
-				preProcessedInfixExpression.push_back(trim(cs(trimmedInfixExpression[index])));
+				preProcessedInfixExpression.push_back(trim(TokenHelper::convertCharToString(trimmedInfixExpression[index])));
 				index = index + 1;
 			}
 			else {
@@ -97,20 +97,20 @@ void PreProcessInfixExpression::Process() {
 							concatenated += "1";
 							preProcessedInfixExpression.push_back(concatenated );
 							preProcessedInfixExpression.push_back("*");
-							preProcessedInfixExpression.push_back(trim(cs(trimmedInfixExpression[index])));
+							preProcessedInfixExpression.push_back(trim(TokenHelper::convertCharToString(trimmedInfixExpression[index])));
 							concatenated.clear();
 							index = index + 1;
 						}
 						// if not unary ('*', '/', '^', '%') then proceed as normal
 						else {
-							preProcessedInfixExpression.push_back(trim(cs(trimmedInfixExpression[index])));
+							preProcessedInfixExpression.push_back(trim(TokenHelper::convertCharToString(trimmedInfixExpression[index])));
 							index = index + 1;
 						}
 					}
 					// if leading number before open parenthesis then add "* " in-between the parenthesis and the number
 					else if (TokenHelper::isTokenDigit(trimmedInfixExpression[index - 1])) {
 						preProcessedInfixExpression.push_back("*");
-						preProcessedInfixExpression.push_back(trim(cs(trimmedInfixExpression[index])));
+						preProcessedInfixExpression.push_back(trim(TokenHelper::convertCharToString(trimmedInfixExpression[index])));
 						index = index + 1;
 
 					}
@@ -119,19 +119,19 @@ void PreProcessInfixExpression::Process() {
 						if ((trimmedInfixExpression[index] == ')') || (trimmedInfixExpression[index] == '}') || (trimmedInfixExpression[index]) == ']') {
 							preProcessedInfixExpression.push_back("1");
 							preProcessedInfixExpression.push_back("*");
-							preProcessedInfixExpression.push_back(trim(cs(trimmedInfixExpression[index])));
+							preProcessedInfixExpression.push_back(trim(TokenHelper::convertCharToString(trimmedInfixExpression[index])));
 							index = index + 1;
 						}
 						else {
 							preProcessedInfixExpression.push_back("*");
-							preProcessedInfixExpression.push_back(trim(cs(trimmedInfixExpression[index])));
+							preProcessedInfixExpression.push_back(trim(TokenHelper::convertCharToString(trimmedInfixExpression[index])));
 							index = index + 1;
 						}
 					}
 				}
 				// if closing parenthesis then proceed as normal
 				else {
-					preProcessedInfixExpression.push_back(trim(cs(trimmedInfixExpression[index])));
+					preProcessedInfixExpression.push_back(trim(TokenHelper::convertCharToString(trimmedInfixExpression[index])));
 					index = index + 1;
 				}
 			}

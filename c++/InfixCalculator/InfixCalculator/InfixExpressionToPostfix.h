@@ -34,31 +34,6 @@ private:
 	vector <string> infixExpression;
 	vector<Token> postfixExpression;
 	stack <Token> operatorStack;
-
-private:
-	
-	inline vector<string> stov(string s)
-	{
-		string buffer("");
-		int i = 0;
-		buffer.clear();
-		vector<string> temp;
-		for (auto token : s)
-		{
-			while(true)
-			{
-				if (token == ' ' || token == '/0')
-					break;
-				else;
-				buffer.append(token, 1);
-				
-				break;
-			}
-		}
-		cout<<buffer<<endl;
-		return temp;
-	}
-	
 };
 
 #endif

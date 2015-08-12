@@ -71,18 +71,40 @@ namespace TokenHelper {
 			return PARENTHESIS_OPENING::NON;
 	}
 
+	string convertCharToString(char c)
+	{
+		stringstream ss;
+		string s;
+		ss << c;
+		ss >> s;
+		return s;
+	}
+
+	vector<string> convertStringToVector(string s)
+	{
+		vector<string> tokens;
+		char *next = NULL;
+		char * p = strtok_s(&s[0], " ", &next);
+		while (p != 0)
+		{
+			tokens.push_back(p);
+			p = strtok_s(NULL, " ", &next);
+		}
+		return tokens;
+	}
+
 	bool isTokenDigit(char c) {
 		return (isdigit(c) > 0) ? true : false;
 	}
 
 	bool isTokenNumber(string s) {
+		bool isnumber = true;
 
-		bool isNumber = true;
-		for (string::const_iterator it = s.begin(); it != s.end(); ++it)
+		for (unsigned int index = 0; index < s.length(); index++)
 		{
-			isNumber = isNumber && isdigit(*it);
+			isnumber = isnumber && isdigit(s[index]);
 		}
-		return isNumber;
+		return isnumber;
 	}
 
 	TOKEN_TYPE getTokenType(string s)
@@ -118,7 +140,7 @@ namespace TokenHelper {
 		else if (TokenHelper::isTokenParenthesis(s))
 			return PRECEDENCE::PAR;
 		else if (TokenHelper::isTokenNumber(s))
-			return PRECEDENCE::NON;
+			return PRECEDENCE::NUM;
 		else
 			return PRECEDENCE::NON;
 	}

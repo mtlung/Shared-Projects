@@ -22,5 +22,7 @@ namespace TokenHelper {
 	PRECEDENCE getTokenPrecedence(string s);
 	PARENTHESIS_OPENING getParenthesisOpening(string s);
 	PARENTHESIS_OPENING getParenthesisOpening(char c);
+	string convertCharToString(char c);
+	vector<string> convertStringToVector(string s);
 }
 #endif

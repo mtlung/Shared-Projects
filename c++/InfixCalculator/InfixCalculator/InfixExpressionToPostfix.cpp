@@ -16,7 +16,7 @@ InfixExpressionToPostfix::InfixExpressionToPostfix(string infixExpression)
 
 InfixExpressionToPostfix::InfixExpressionToPostfix(char * infixExpression)
 {
-	this->infixExpression = stov(infixExpression);
+	this->infixExpression = TokenHelper::convertStringToVector(infixExpression);
 }
 
 InfixExpressionToPostfix::InfixExpressionToPostfix(vector<string> infixExpression)
@@ -31,9 +31,11 @@ InfixExpressionToPostfix::~InfixExpressionToPostfix()
 
 void InfixExpressionToPostfix::Process()
 {
+	Token token;
+	postfixExpression.clear();
+
 	for (unsigned index = 0; index < infixExpression.size(); index++) {
-	
-		Token token;
+		
 		token.value = infixExpression.at(index);
 		token.type = TokenHelper::getTokenType(infixExpression.at(index));
 		token.precedence = TokenHelper::getTokenPrecedence(infixExpression.at(index));
@@ -86,31 +88,34 @@ void InfixExpressionToPostfix::Process()
 void InfixExpressionToPostfix::DisplayInfixExpression()
 {
 	int index = 0;
+	cout << "----- INPUT PREFIX----- " << endl;
 	for (auto token : infixExpression)
 	{
-		cout << "token at[" << index << "]:" << token << endl;;
+		cout << "\'" << token << "\' ";
 		index = index + 1;
 	}
+	cout << endl;
 }
 
 void InfixExpressionToPostfix::DisplayPostfixExpression()
 {
 	int index = 0;
+	cout << "----- POSTFIX ----- " << endl;
 	for (auto token : postfixExpression)
 	{
-		cout << "token at[" << index << "]:" << token.value << endl;;
+		cout << "token at[" << index << "]:" << token.value << endl;
 		index = index + 1;
 	}
 }
 
 void InfixExpressionToPostfix::setInfixExpression(string infixExpression)
 {
-	this->infixExpression = stov(infixExpression);
+	this->infixExpression = TokenHelper::convertStringToVector(infixExpression);
 }
 
 void InfixExpressionToPostfix::setInfixExpression(char * infixExpression)
 {
-	this->infixExpression = stov(infixExpression);
+	this->infixExpression = TokenHelper::convertStringToVector(infixExpression);
 }
 
 void InfixExpressionToPostfix::setInfixExpression(vector<string> infixExpression)

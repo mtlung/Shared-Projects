@@ -32,13 +32,6 @@ private:
 	string trimmedInfixExpression;
 	string rawInfixExpression;
 private:
-	inline string cs(char c) {
-		stringstream ss;
-		string s;
-		ss << c;
-		ss >> s;
-		return s;
-	}
 
 	inline string &removespaces(string &s) {
 		s.erase(remove(s.begin(), s.end(), ' '), s.end());

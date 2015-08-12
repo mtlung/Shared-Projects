@@ -11,6 +11,7 @@ using std::cout;
 using std::cerr;
 using std::endl;
 
+//#include<cstring>
 #include <string>
 using std::string;
 
@@ -25,6 +26,12 @@ using std::for_each;
 
 #include <sstream>
 using std::stringstream;
+using std::istringstream;
+using std::copy;
+
+#include<iterator>>
+using std::istream_iterator;
+using std::back_inserter;
 
 #include<cctype>
 #include <locale>

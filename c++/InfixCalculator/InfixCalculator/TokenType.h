@@ -9,38 +9,39 @@
 #define INFIXCALCULATOR_TOKENTYPE_H
 
 enum class TOKEN_TYPE {
-	NUM = 1,
-	OPR = 2,
-	PAR = 3,
-	SPC = 4,
-	TAB = 5,
+	NUM = 0,
+	OPR = 1,
+	PAR = 2,
+	SPC = 3,
+	TAB = 4,
 	NON = 10
 };
 
 enum class ASSOCIATIVITY {
-	LTR = 1,
-	RTR = 2,
+	LTR = 0,
+	RTR = 1,
 };
 
 enum class PARENTHESIS_TYPE {
-	SML = 1,
-	MID = 2,
-	BIG = 3,
+	SML = 0,
+	MID = 1,
+	BIG = 2,
 	NON = 10
 };
 
 enum class PARENTHESIS_OPENING {
-	OPN = 1,
-	CLS = 2,
-	NON = 10
+	OPN = 0,
+	CLS = 1,
+	NON = 2
 };
 
 enum class NUMBER_TYPE {
-	POS = 1,
-	NEG = 2
+	POS = 0,
+	NEG = 1
 };
 
 enum class PRECEDENCE {
+	NUM = 0,
 	PAR = 1,
 	ADD = 2,
 	SUB = 2,
