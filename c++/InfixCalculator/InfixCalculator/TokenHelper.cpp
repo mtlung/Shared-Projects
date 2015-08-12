@@ -31,6 +31,21 @@ namespace TokenHelper {
 			return false;
 	}
 
+	bool convertStringToDouble(string s, double &d)
+	{
+		bool isnum = false;
+		try {
+			d = stod(s);
+			isnum = true;
+		}
+		catch (std::exception e)
+		{
+			d = 0.00f;
+			isnum = false;
+		}
+		return isnum;
+	}
+
 	bool isTokenParenthesis(string s)
 	{
 		if ((s == "(") || (s == "[") || (s == "{") || (s == "}") || (s == "]") || (s == ")"))
@@ -98,17 +113,21 @@ namespace TokenHelper {
 	}
 
 	bool isTokenNumber(string s) {
-		bool isnumber = true;
-
-		for (unsigned int index = 0; index < s.length(); index++)
+		double d;
+		bool isnumber = false;
+		if (TokenHelper::convertStringToDouble(s, d))
 		{
-			isnumber = isnumber && isdigit(s[index]);
+			isnumber = true;
+		}
+		else 
+		{
+			isnumber = false;
 		}
 		return isnumber;
 	}
 
 	TOKEN_TYPE getTokenType(string s)
-	{
+ 	{
 		if (isTokenNumber(s)) {
 			return TOKEN_TYPE::NUM;
 		}
@@ -121,6 +140,24 @@ namespace TokenHelper {
 		else {
 			return TOKEN_TYPE::NON;
 		}
+	}
+
+	OPERATOR_TYPE getOperatorType(string s)
+	{
+		if (s == "+")
+			return OPERATOR_TYPE::ADD;
+		else if (s == "-")
+			return OPERATOR_TYPE::SUB;
+		else if (s == "*")
+			return OPERATOR_TYPE::MUL;
+		else if (s == "/")
+			return OPERATOR_TYPE::DIV;
+		else if (s == "%")
+			return OPERATOR_TYPE::MOD;
+		else if (s == "^")
+			return OPERATOR_TYPE::PWR;
+		else
+			return OPERATOR_TYPE::NON;
 	}
 
 	PRECEDENCE getTokenPrecedence(string s)

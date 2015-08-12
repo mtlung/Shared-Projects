@@ -7,26 +7,38 @@
 
 #include "PreProcessInfixExpression.h"
 #include "InfixExpressionToPostfix.h"
-
+#include "PostfixExpressionToCalculation.h"
 int main(int argc, const char * argv[]) {
 
 	string userInput;
-	PreProcessInfixExpression infixCalc;
+	PreProcessInfixExpression infixProcessor;
 	InfixExpressionToPostfix infixToPostfix;
-	string preProcessedInfixExpression;
+	PostfixExpressionToCalculation postfixCalculator;
 
+	
 	do {
 		cout << "Enter expression to evaluate: " << endl;
 		getline(cin, userInput);
 		if (!userInput.empty()) {
-			infixCalc.SetRawInfixExpression(userInput);
-			infixCalc.Process();
-			infixCalc.DisplayPreProcessedInfixExpression();
-			preProcessedInfixExpression = infixCalc.GetPreProcessedInfixExpression();
+
+			infixProcessor.SetRawInfixExpression(userInput);
+			infixProcessor.Process();
+			infixProcessor.DisplayPreProcessedInfixExpression();
+			
+			string preProcessedInfixExpression = infixProcessor.GetPreProcessedInfixExpression();
+
 			infixToPostfix.setInfixExpression(preProcessedInfixExpression);
 			infixToPostfix.DisplayInfixExpression();
-			infixToPostfix.Process();
+			infixToPostfix.Process();			
 			infixToPostfix.DisplayPostfixExpression();
+
+			string postfixExpression = infixToPostfix.getPostfixExpression();
+
+			postfixCalculator.setPostfixExpression(postfixExpression);
+			postfixCalculator.DisplayPostfixExpression();
+			postfixCalculator.Process();
+			postfixCalculator.DisplayPostfixCaculationResult();
+		
 		}
 	} while (userInput.length() > 0);
 	cout << "Execution terminated..." << endl;

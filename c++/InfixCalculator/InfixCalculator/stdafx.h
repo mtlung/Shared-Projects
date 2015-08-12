@@ -14,6 +14,7 @@ using std::endl;
 //#include<cstring>
 #include <string>
 using std::string;
+using std::stod;
 
 #include <stack>
 using std::stack;

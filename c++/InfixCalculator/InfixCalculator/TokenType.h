@@ -40,6 +40,18 @@ enum class NUMBER_TYPE {
 	NEG = 1
 };
 
+enum class OPERATOR_TYPE {
+	ADD = 1,
+	SUB = 2,
+	MUL = 3,
+	DIV = 4,
+	MOD = 5,
+	PWR = 6,
+	//EXP
+	//SIN...
+	NON = 10
+};
+
 enum class PRECEDENCE {
 	NUM = 0,
 	PAR = 1,

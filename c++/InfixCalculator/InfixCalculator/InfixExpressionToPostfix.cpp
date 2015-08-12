@@ -16,12 +16,12 @@ InfixExpressionToPostfix::InfixExpressionToPostfix(string infixExpression)
 
 InfixExpressionToPostfix::InfixExpressionToPostfix(char * infixExpression)
 {
-	this->infixExpression = TokenHelper::convertStringToVector(infixExpression);
+	this->setInfixExpression(infixExpression);
 }
 
 InfixExpressionToPostfix::InfixExpressionToPostfix(vector<string> infixExpression)
 {
-	this->infixExpression = infixExpression;
+	this->setInfixExpression(infixExpression);
 }
 
 
@@ -99,7 +99,7 @@ void InfixExpressionToPostfix::DisplayInfixExpression()
 
 void InfixExpressionToPostfix::DisplayPostfixExpression()
 {
-	int index = 0;
+	unsigned int index = 0;
 	cout << "----- POSTFIX ----- " << endl;
 	for (auto token : postfixExpression)
 	{
@@ -135,7 +135,7 @@ string InfixExpressionToPostfix::getInfixExpression() const
 	return buffer;
 }
 
-string InfixExpressionToPostfix::getPostfixPexression() const
+string InfixExpressionToPostfix::getPostfixExpression() const
 {
 	string buffer;
 	for (auto token : postfixExpression)

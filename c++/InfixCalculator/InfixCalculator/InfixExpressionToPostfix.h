@@ -8,8 +8,8 @@
 #include "TokenHelper.h"
 #include "Token.h"
 
-#ifndef INFIXCALCULATOR_INFIXEXPRESSIONTOPOSTFIX_H
-#define INFIXCALCULATOR_INFIXEXPRESSIONTOPOSTFIX_H
+#ifndef INFIXCALCULATOR_INFIXEXPRESSION_TO_POSTFIX_H
+#define INFIXCALCULATOR_INFIXEXPRESSION_TO_POSTFIX_H
 
 class InfixExpressionToPostfix
 {
@@ -28,7 +28,7 @@ public:
 	void setInfixExpression(char *infixExpression);
 	void setInfixExpression(vector<string> infixExpression);
 	string getInfixExpression() const;
-	string getPostfixPexression() const;
+	string getPostfixExpression() const;
 
 private:
 	vector <string> infixExpression;

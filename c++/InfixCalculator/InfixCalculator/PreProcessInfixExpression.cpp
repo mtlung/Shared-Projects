@@ -102,7 +102,8 @@ void PreProcessInfixExpression::Process() {
 							index = index + 1;
 						}
 						// if not unary ('*', '/', '^', '%') then proceed as normal
-						else {
+						else
+						{
 							preProcessedInfixExpression.push_back(trim(TokenHelper::convertCharToString(trimmedInfixExpression[index])));
 							index = index + 1;
 						}
@@ -123,7 +124,6 @@ void PreProcessInfixExpression::Process() {
 							index = index + 1;
 						}
 						else {
-							preProcessedInfixExpression.push_back("*");
 							preProcessedInfixExpression.push_back(trim(TokenHelper::convertCharToString(trimmedInfixExpression[index])));
 							index = index + 1;
 						}
