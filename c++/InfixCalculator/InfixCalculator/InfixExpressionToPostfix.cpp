@@ -5,28 +5,27 @@
 
 #include "InfixExpressionToPostfix.h"
 
-InfixExpressionToPostfix::InfixExpressionToPostfix()
+InfixExpressionToPostfix::InfixExpressionToPostfix() 
 {
+
 }
 
-InfixExpressionToPostfix::InfixExpressionToPostfix(string infixExpression)
+InfixExpressionToPostfix::InfixExpressionToPostfix(string infixExpression) 
 {
 	this->setInfixExpression(infixExpression);
 }
 
-InfixExpressionToPostfix::InfixExpressionToPostfix(char * infixExpression)
+InfixExpressionToPostfix::InfixExpressionToPostfix(char * infixExpression) 
 {
 	this->setInfixExpression(infixExpression);
 }
 
-InfixExpressionToPostfix::InfixExpressionToPostfix(vector<string> infixExpression)
+InfixExpressionToPostfix::InfixExpressionToPostfix(vector<string> infixExpression) 
 {
 	this->setInfixExpression(infixExpression);
 }
 
-
-InfixExpressionToPostfix::~InfixExpressionToPostfix()
-{
+InfixExpressionToPostfix::~InfixExpressionToPostfix() {
 }
 
 void InfixExpressionToPostfix::Process()
@@ -50,10 +49,9 @@ void InfixExpressionToPostfix::Process()
 			{
 				operatorStack.push(token);
 			}
-			else {
-				while (!operatorStack.empty() && 
-					TokenHelper::isTokenOperator(operatorStack.top().value) &&
-					(token.precedence <= operatorStack.top().precedence)) 
+			else 
+			{
+				while (!operatorStack.empty() && TokenHelper::isTokenOperator(operatorStack.top().value) && (token.precedence <= operatorStack.top().precedence)) 
 				{
 					postfixExpression.push_back(operatorStack.top());
 					operatorStack.pop();
@@ -108,8 +106,8 @@ void InfixExpressionToPostfix::DisplayPostfixExpression()
 	}
 }
 
-void InfixExpressionToPostfix::setInfixExpression(string infixExpression)
-{
+void InfixExpressionToPostfix::setInfixExpression(string infixExpression) {
+
 	this->infixExpression = TokenHelper::convertStringToVector(infixExpression);
 }
 

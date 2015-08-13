@@ -139,7 +139,7 @@ namespace TokenHelper {
 		}
 		else {
 			return TOKEN_TYPE::NON;
-		}
+		}	
 	}
 
 	OPERATOR_TYPE getOperatorType(string s)
