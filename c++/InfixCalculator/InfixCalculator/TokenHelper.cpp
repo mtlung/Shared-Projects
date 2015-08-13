@@ -141,7 +141,7 @@ namespace TokenHelper {
 			return TOKEN_TYPE::NON;
 		}	
 	}
-
+					  
 	OPERATOR_TYPE getOperatorType(string s)
 	{
 		if (s == "+")
